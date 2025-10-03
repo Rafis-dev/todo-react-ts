@@ -67,3 +67,8 @@
 .todo-list-item__buttons button.btn-uncheck {
   background-image: url('../../../assets/images/uncheck.png');
 }
+
+.checked {
+  filter: brightness(85%);
+  text-decoration: line-through;
+}

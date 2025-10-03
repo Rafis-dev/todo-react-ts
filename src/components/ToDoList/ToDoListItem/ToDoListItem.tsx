@@ -7,7 +7,11 @@ export const ToDoListItem = ({
   deleteToDo,
 }: ToDoListItemProps) => {
   return (
-    <li className="todo-list-item__wrapper">
+    <li
+      className={`todo-list-item__wrapper ${
+        toDoListItem.isDone ? 'checked' : ''
+      }`}
+    >
       <span>{toDoListItem.text}</span>
       <div className="todo-list-item__buttons">
         <button
@@ -16,6 +20,7 @@ export const ToDoListItem = ({
             deleteToDo(toDoListItem);
           }}
         ></button>
+
         <button
           className={toDoListItem.isDone ? 'btn-check' : 'btn-uncheck'}
           onClick={() => {

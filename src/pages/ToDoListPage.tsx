@@ -3,9 +3,13 @@ import { Form } from '../components/Form/Form';
 import { Header } from '../components/Header/Header';
 import { ToDoList } from '../components/ToDoList/ToDoList';
 import { ToDo } from '../models/todo-item';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const ToDoListPage = () => {
   const [todos, setTodos] = useState<ToDo[]>([]);
+  const notifyTaskCreated = () => toast.info('Добавлена новая задача');
+  const notifyTaskUpdated = () => toast.success('Задача обновлена');
+  const notifyTaskDeleted = () => toast.error('Задача удалена');
 
   const createNewToDo = (text: string) => {
     const newToDo: ToDo = {
@@ -14,6 +18,7 @@ export const ToDoListPage = () => {
       isDone: false,
     };
     setTodos([...todos, newToDo]);
+    notifyTaskCreated();
   };
 
   const updateToDo = (toDoItem: ToDo) => {
@@ -25,11 +30,13 @@ export const ToDoListPage = () => {
     });
 
     setTodos(newToDos);
+    notifyTaskUpdated();
   };
 
   const deleteToDo = (toDoItem: ToDo) => {
     const newToDos = todos.filter(item => item.id !== toDoItem.id);
     setTodos(newToDos);
+    notifyTaskDeleted();
   };
 
   return (
@@ -37,6 +44,11 @@ export const ToDoListPage = () => {
       <Header />
       <Form createNewToDo={createNewToDo} />
       <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1500}
+        hideProgressBar={true}
+      />
     </>
   );
 };
