@@ -18,12 +18,16 @@ export const ToDoListItem = ({
     }
   }, [edit]); // Будет выполняться каждый раз, когда edit изменяется
 
+  const finishEdit = () => {
+    setEdit(false);
+    updateToDo({ ...toDoListItem, text });
+  };
+
   // Обработчик нажатия клавиши
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      setEdit(false);
-      updateToDo({ ...toDoListItem, text });
+      finishEdit();
     } else if (e.key === 'Escape') {
       e.preventDefault();
       setEdit(false);
@@ -42,6 +46,7 @@ export const ToDoListItem = ({
           ref={editRef}
           value={text}
           onChange={e => setText(e.target.value)}
+          onBlur={finishEdit}
           onKeyDown={handleKeyDown}
         />
       ) : (
