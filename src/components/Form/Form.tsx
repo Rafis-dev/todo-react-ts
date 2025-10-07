@@ -4,7 +4,8 @@ import './Form.scss';
 export const Form = ({ createNewToDo }: { createNewToDo: Function }) => {
   const [text, setText] = useState<string>('');
 
-  const formSubmit = () => {
+  const formSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
     if (text) {
       createNewToDo(text);
       setText('');

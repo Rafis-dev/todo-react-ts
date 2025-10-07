@@ -12,8 +12,8 @@ export const Header = () => {
         <NavLink to="/" className={getActiveClass}>
           Главная
         </NavLink>
-        <NavLink to="/todo" className={getActiveClass}>
-          Задачи
+        <NavLink to="/list" className={getActiveClass}>
+          Список
         </NavLink>
       </div>
     </header>
