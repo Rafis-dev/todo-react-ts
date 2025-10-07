@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { Form } from '../components/Form/Form';
 import { ToDoList } from '../components/ToDoList/ToDoList';
 import { ToDo } from '../models/todo-item';
@@ -19,7 +18,7 @@ export const ToDoListPage = () => {
   const notifyTaskCreated = () => toast.info('Добавлена новая задача');
   const notifyTaskDeleted = () => toast.error('Задача удалена');
   const notifyTaskCompleted = () => toast.success('Задача завершена');
-  const notifyTaskUpdated = () => toast.success('Задача обновлена');
+  const notifyTaskUpdated = () => toast.info('Задача обновлена');
   const notifyTaskRestored = () =>
     toast.success('Задача возвращена в незавершенные');
 
