@@ -2,16 +2,19 @@ export interface ToDo {
   id: number;
   text: string;
   isDone: boolean;
+  edit: boolean;
 }
 
 export interface ToDoListProps {
   todos: ToDo[];
-  updateToDo: Function;
+  completeToDo: Function;
   deleteToDo: Function;
+  updateToDo: Function;
 }
 
 export interface ToDoListItemProps {
   toDoListItem: ToDo;
-  updateToDo: Function;
+  completeToDo: Function;
   deleteToDo: Function;
+  updateToDo: Function;
 }

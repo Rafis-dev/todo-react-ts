@@ -5,7 +5,12 @@ import { ToDo } from '../models/todo-item';
 import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { createAction, updateAction, deleteAction } from '../feature/todoList';
+import {
+  createAction,
+  completeAction,
+  deleteAction,
+  updateAction,
+} from '../feature/todoList';
 
 export const ToDoListPage = () => {
   const todoList = useSelector((state: RootState) => state.todoList.todos);
@@ -14,6 +19,7 @@ export const ToDoListPage = () => {
   const notifyTaskCreated = () => toast.info('Добавлена новая задача');
   const notifyTaskDeleted = () => toast.error('Задача удалена');
   const notifyTaskCompleted = () => toast.success('Задача завершена');
+  const notifyTaskUpdated = () => toast.success('Задача обновлена');
   const notifyTaskRestored = () =>
     toast.success('Задача возвращена в незавершенные');
 
@@ -30,8 +36,8 @@ export const ToDoListPage = () => {
     notifyTaskCreated();
   };
 
-  const updateToDo = (toDoItem: ToDo) => {
-    dispatch(updateAction(toDoItem));
+  const completeToDo = (toDoItem: ToDo) => {
+    dispatch(completeAction(toDoItem));
     notifyStatusChange(toDoItem);
   };
 
@@ -40,13 +46,19 @@ export const ToDoListPage = () => {
     notifyTaskDeleted();
   };
 
+  const updateToDo = (toDoItem: ToDo) => {
+    dispatch(updateAction(toDoItem));
+    notifyTaskUpdated();
+  };
+
   return (
     <>
       <Form createNewToDo={createNewToDo} />
       <ToDoList
         todos={todoList}
-        updateToDo={updateToDo}
+        completeToDo={completeToDo}
         deleteToDo={deleteToDo}
+        updateToDo={updateToDo}
       />
       <ToastContainer
         position="bottom-right"
