@@ -16,7 +16,7 @@ export const todoSlice = createSlice({
   reducers: {
     createAction: (state, action: PayloadAction<string>) => {
       const newToDo: ToDo = {
-        id: state.todos.length,
+        id: Date.now(),
         text: action.payload,
         isDone: false,
         edit: false,

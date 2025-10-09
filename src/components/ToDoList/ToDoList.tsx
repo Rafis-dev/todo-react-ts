@@ -14,7 +14,7 @@ export const ToDoList = ({
       .map((item, index) => {
         return (
           <ToDoListItem
-            key={index}
+            key={item.id}
             toDoListItem={item}
             completeToDo={completeToDo}
             deleteToDo={deleteToDo}
@@ -30,7 +30,7 @@ export const ToDoList = ({
       .map((item, index) => {
         return (
           <ToDoListItem
-            key={index}
+            key={item.id}
             toDoListItem={item}
             completeToDo={completeToDo}
             deleteToDo={deleteToDo}
