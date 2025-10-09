@@ -1,6 +1,10 @@
 import { ToDoListItem } from './ToDoListItem/ToDoListItem';
-import './ToDoList.scss';
 import { ToDoListProps } from '../../models/todo-item';
+import {
+  TodoListCompleted,
+  TodoListContainer,
+  TodoListNotCompleted,
+} from './ToDoListItem/ToDoList.styled';
 
 export const ToDoList = ({
   todos,
@@ -11,7 +15,7 @@ export const ToDoList = ({
   const checkedList = () => {
     return todos
       .filter(item => !item.isDone)
-      .map((item, index) => {
+      .map(item => {
         return (
           <ToDoListItem
             key={item.id}
@@ -27,7 +31,7 @@ export const ToDoList = ({
   const uncheckedList = () => {
     return todos
       .filter(item => item.isDone)
-      .map((item, index) => {
+      .map(item => {
         return (
           <ToDoListItem
             key={item.id}
@@ -41,10 +45,10 @@ export const ToDoList = ({
   };
 
   return (
-    <div className="todo-container">
-      <ul className="todo-list failed">{checkedList()}</ul>
+    <TodoListContainer>
+      <TodoListNotCompleted>{checkedList()}</TodoListNotCompleted>
 
-      <ul className="todo-list completed">{uncheckedList()}</ul>
-    </div>
+      <TodoListCompleted>{uncheckedList()}</TodoListCompleted>
+    </TodoListContainer>
   );
 };

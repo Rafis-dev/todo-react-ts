@@ -1,6 +1,16 @@
-import './ToDoListItem.scss';
 import { ToDoListItemProps } from '../../../models/todo-item';
 import { useState, useRef, useEffect } from 'react';
+import {
+  ToDoItemButton,
+  ToDoItemControls,
+  ToDoItemText,
+  ToDoItemWrapper,
+} from './ToDoListItem.styled';
+import checkIcon from '../../../assets/images/check.png';
+import uncheckIcon from '../../../assets/images/uncheck.png';
+import trashIcon from '../../../assets/images/trash.png';
+import pencil from '../../../assets/images/pencil.png';
+import activePencil from '../../../assets/images/edit-pencil.png';
 
 export const ToDoListItem = ({
   toDoListItem,
@@ -60,11 +70,9 @@ export const ToDoListItem = ({
   }, [edit, listItemRef, text]);
 
   return (
-    <li
+    <ToDoItemWrapper
       ref={listItemRef}
-      className={`todo-list-item__wrapper ${
-        toDoListItem.isDone ? 'checked' : ''
-      }`}
+      className={toDoListItem.isDone ? 'checked' : ''}
     >
       {edit ? (
         <input
@@ -74,30 +82,29 @@ export const ToDoListItem = ({
           onKeyDown={handleKeyDown}
         />
       ) : (
-        <span>{toDoListItem.text}</span>
+        <ToDoItemText>{toDoListItem.text}</ToDoItemText>
       )}
-      <div className="todo-list-item__buttons">
-        <button
-          className={edit ? 'btn-edit-active' : 'btn-edit'}
+      <ToDoItemControls>
+        <ToDoItemButton
+          icon={edit ? activePencil : pencil}
           style={{ display: toDoListItem.isDone ? 'none' : '' }}
           onClick={e => {
-            e.stopPropagation();
             if (edit) {
               finishEdit();
             } else {
               setEdit(prevEdit => !prevEdit);
             }
           }}
-        ></button>
-        <button
-          className="btn-trash"
+        ></ToDoItemButton>
+        <ToDoItemButton
+          icon={trashIcon}
           onClick={() => {
             deleteToDo(toDoListItem);
           }}
-        ></button>
+        ></ToDoItemButton>
 
-        <button
-          className={toDoListItem.isDone ? 'btn-check' : 'btn-uncheck'}
+        <ToDoItemButton
+          icon={toDoListItem.isDone ? checkIcon : uncheckIcon}
           disabled={edit}
           style={{
             opacity: edit ? '25%' : '100%',
@@ -106,8 +113,8 @@ export const ToDoListItem = ({
           onClick={() => {
             completeToDo(toDoListItem);
           }}
-        ></button>
-      </div>
-    </li>
+        ></ToDoItemButton>
+      </ToDoItemControls>
+    </ToDoItemWrapper>
   );
 };
