@@ -20,7 +20,7 @@ export const ToDoListPage = () => {
   const notifyTaskCompleted = () => toast.success('Задача завершена');
   const notifyTaskUpdated = () => toast.info('Задача обновлена');
   const notifyTaskRestored = () =>
-    toast.success('Задача возвращена в незавершенные');
+    toast.info('Задача возвращена в незавершенные');
 
   const notifyStatusChange = (toDoItem: ToDo) => {
     if (toDoItem.isDone) {
