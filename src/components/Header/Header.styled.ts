@@ -7,6 +7,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
 export const HeaderBlock = styled.header`
@@ -18,4 +19,16 @@ export const HeaderBlock = styled.header`
   background-color: #4682b4;
   display: flex;
   align-items: center;
+`;
+
+export const ThemeHeaderBtn = styled.button<{ icon: string }>`
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  box-shadow: none;
+  background-image: url(${props => props.icon});
+  cursor: pointer;
 `;

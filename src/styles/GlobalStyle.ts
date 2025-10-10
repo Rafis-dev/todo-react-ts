@@ -8,7 +8,8 @@ ${normalize}
 }
 
 body {
-  background-color: #edf0f1;
+  transition: background-color .2s;
+  background-color: ${({ theme }) => theme.colors.backgroundSecondary};
   padding: 50px 0 0 0;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
