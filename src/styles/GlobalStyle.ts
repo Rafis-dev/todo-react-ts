@@ -10,7 +10,6 @@ ${normalize}
 body {
   transition: background-color .2s;
   background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-  padding: 50px 0 0 0;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.429;

@@ -13,7 +13,7 @@ export const Form = ({ createNewToDo }: { createNewToDo: Function }) => {
 
   const formSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (text) {
+    if (text.trim()) {
       createNewToDo(text);
       setText('');
     }
@@ -24,7 +24,7 @@ export const Form = ({ createNewToDo }: { createNewToDo: Function }) => {
       <FormBlock action="#" onSubmit={formSubmit}>
         <FormLabel>
           <FormInput
-            value={text}
+            value={text.trim() ? text : ''}
             type="text"
             onChange={e => setText(e.target.value)}
           />

@@ -1,6 +1,7 @@
 import { ToDoListItemProps } from '../../../models/todo-item';
 import { useState, useRef, useEffect } from 'react';
 import {
+  EditInput,
   ToDoItemButton,
   ToDoItemControls,
   ToDoItemText,
@@ -26,7 +27,7 @@ export const ToDoListItem = ({
   const finishEdit = () => {
     setEdit(false);
     // Если текст не изменился — отменяем редактирование
-    if (text.trim() === toDoListItem.text.trim()) {
+    if (text.trim() === toDoListItem.text.trim() || text.trim() === '') {
       setText(toDoListItem.text); // возвращаем оригинальный текст на всякий случай
       return;
     }
@@ -75,7 +76,7 @@ export const ToDoListItem = ({
       className={toDoListItem.isDone ? 'checked' : ''}
     >
       {edit ? (
-        <input
+        <EditInput
           ref={editRef}
           value={text}
           onChange={e => setText(e.target.value)}
