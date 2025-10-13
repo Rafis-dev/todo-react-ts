@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { HeaderContainer, HeaderBlock, ThemeHeaderBtn } from './Header.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleThemeAction } from '../../feature/themeList';
@@ -10,6 +10,7 @@ export const Header = () => {
   const theme = useSelector((state: RootState) => state.themeList.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getActiveClass = ({ isActive }: { isActive: boolean }): string => {
     return isActive ? 'active link' : 'link';
