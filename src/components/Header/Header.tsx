@@ -1,16 +1,16 @@
-import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { HeaderContainer, HeaderBlock, ThemeHeaderBtn } from './Header.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleThemeAction } from '../../feature/themeList';
 import darkModeIcon from '../../assets/images/dark.png';
 import lightModeIcon from '../../assets/images/light.png';
 import { RootState } from '../../store';
+import { useSmartNavigate } from '../../hooks/useSmartNavigate';
 
 export const Header = () => {
   const theme = useSelector((state: RootState) => state.themeList.theme);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const smartNavigate = useSmartNavigate();
 
   const getActiveClass = ({ isActive }: { isActive: boolean }): string => {
     return isActive ? 'active link' : 'link';
@@ -23,21 +23,12 @@ export const Header = () => {
     transform: 'translateY(-50%)',
   };
 
-  const handleGoHome = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate('/', { replace: true }); // заменяет текущий маршрут, не добавляя в историю
-  };
-
   return (
     <HeaderBlock>
       <HeaderContainer>
-        <a
-          href="/"
-          className={getActiveClass({ isActive: location.pathname === '/' })}
-          onClick={handleGoHome}
-        >
+        <NavLink to="/" className={getActiveClass}>
           Главная
-        </a>
+        </NavLink>
         <NavLink to="/list" className={getActiveClass}>
           Список
         </NavLink>
