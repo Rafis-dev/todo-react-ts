@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import { ThemeProviderWrapper } from './components/ThemeProviderWrapper/ThemeProviderWrapper';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ThemeProviderWrapper>
+        <RouterProvider router={router} />
+      </ThemeProviderWrapper>
     </Provider>
   </React.StrictMode>
 );

@@ -5,12 +5,10 @@ import { toggleThemeAction } from '../../feature/themeList';
 import darkModeIcon from '../../assets/images/dark.png';
 import lightModeIcon from '../../assets/images/light.png';
 import { RootState } from '../../store';
-import { useSmartNavigate } from '../../hooks/useSmartNavigate';
 
 export const Header = () => {
   const theme = useSelector((state: RootState) => state.themeList.theme);
   const dispatch = useDispatch();
-  const smartNavigate = useSmartNavigate();
 
   const getActiveClass = ({ isActive }: { isActive: boolean }): string => {
     return isActive ? 'active link' : 'link';

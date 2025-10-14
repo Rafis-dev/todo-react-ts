@@ -53,7 +53,11 @@ body {
   color: red;
 }
 
+.not-found-title {
+ color: red;
+}
+
 .img-error {
-  width: 300px;
+  max-width: 300px;
 }
 `;
