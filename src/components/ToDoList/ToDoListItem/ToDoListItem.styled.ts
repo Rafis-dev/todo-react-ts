@@ -72,14 +72,4 @@ export const ToDoItemButton = styled.button<{ icon: string }>`
   outline: none;
   cursor: pointer;
   background-image: url(${props => props.icon});
-
-  &:last-of-type:before {
-    content: '';
-    width: 1px;
-    height: 30px;
-    background: #edf0f1;
-    position: absolute;
-    top: 10px;
-    left: 0;
-  }
 `;
