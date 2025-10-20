@@ -27,7 +27,7 @@ export const Header = () => {
         <NavLink to="/" className={getActiveClass} replace>
           Главная
         </NavLink>
-        <NavLink to="/list" className={getActiveClass} replace>
+        <NavLink to="/list" className={getActiveClass}>
           Список
         </NavLink>
         <div style={toggleButton}>
