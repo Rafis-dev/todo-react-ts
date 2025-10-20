@@ -24,10 +24,10 @@ export const Header = () => {
   return (
     <HeaderBlock>
       <HeaderContainer>
-        <NavLink to="/" className={getActiveClass}>
+        <NavLink to="/" className={getActiveClass} replace>
           Главная
         </NavLink>
-        <NavLink to="/list" className={getActiveClass}>
+        <NavLink to="/list" className={getActiveClass} replace>
           Список
         </NavLink>
         <div style={toggleButton}>

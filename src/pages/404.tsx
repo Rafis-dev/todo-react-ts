@@ -6,7 +6,9 @@ export const NotFound = () => {
     <div className="container">
       <h1>Такой страницы нет</h1>
       <img className="img-error" src={gifImg} alt="Растерянный Траволта" />
-      <Link to="/">На Главную</Link>
+      <Link to="/" replace>
+        На Главную
+      </Link>
     </div>
   );
 };
